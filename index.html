@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salvatore de Luca</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span>Link berhasil disalin!</span>
+    </div>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="#" class="site-title" id="logo-link">Salvatore</a>
+            <div class="header-actions">
+                <button id="btn-copy-link" class="btn-copy-link" title="Salin link website">
+                    <i class="fas fa-link"></i>
+                    <span>Copy Link</span>
+                </button>
+                <div class="font-controls">
+                    <button id="btn-kecil" class="font-btn" title="Perkecil teks">A-</button>
+                    <button id="btn-normal" class="font-btn active" title="Ukuran normal">A</button>
+                    <button id="btn-besar" class="font-btn" title="Perbesar teks">A+</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main-content">
+        <section id="halaman-daftar-isi" class="page active">
+            <div class="container daftar-isi-container">
+                <header class="daftar-header">
+                    <p class="daftar-subtitle" id="subtitle-novel">Salvatore de Luca</p>
+                    <h1 class="daftar-judul" id="judul-novel">Salvatore de Luca</h1>
+                    <p class="daftar-penulis">Karya: ladavnc <span id="penulis-novel">laa da vinci</span></p>
+                </header>
+                <div class="link-sosial">
+                    <a href="#" id="link-wattpad" class="btn-sosial btn-wattpad" target="_blank">
+                        <i class="fab fa-wattpad"></i>
+                        <span>Baca di Wattpad</span>
+                    </a>
+                    <a href="#" id="link-saweria" class="btn-sosial btn-saweria" target="_blank">
+                        <i class="fas fa-coffee"></i>
+                        <span>Coming soon</span>
+                    </a>
+                </div>
+
+                <div class="daftar-list">
+                    <h2 class="list-title">Daftar Isi</h2>
+                    <ul class="chapter-list" id="chapter-list">
+                    </ul>
+                </div>
+
+                <!-- Tombol Share -->
+                <div class="share-section">
+                    <p class="share-text">Bagikan novel ini:</p>
+                    <button id="btn-copy-link-footer" class="btn-copy-link btn-copy-link-large">
+                        <i class="fas fa-link"></i>
+                        <span>Salin Link Website</span>
+                    </button>
+                </div>
+
+                <footer class="daftar-footer">
+                    <p>© 2026 ladavnc. Semua hak cipta dilindungi.</p>
+                </footer>
+            </div>
+        </section>
+      
+        <div id="chapter-pages"></div>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
