@@ -1,0 +1,559 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --warna-latar: #faf7f2;
+    --warna-latar-header: #ffffff;
+    --warna-teks-utama: #2c2c2c;
+    --warna-teks-sekunder: #6b6b6b;
+    --warna-aksen: #8c6b4a;
+    --warna-aksen-muda: #b9977a;
+    --warna-garis: #e5ddd5;
+    --warna-btn-hover: #f0ebe4;
+    --warna-sukses: #4caf50;
+    --warna-wattpad: #ff6126;
+    --warna-saweria: #f79e1b;
+    --font-judul: 'Playfair Display', serif;
+    --font-teks: 'Lora', serif;
+    --ukuran-baca-default: 18px;
+    --transisi: all 0.3s ease;
+}
+
+body {
+    font-family: var(--font-teks);
+    background-color: var(--warna-latar);
+    color: var(--warna-teks-utama);
+    line-height: 1.8;
+    font-size: var(--ukuran-baca-default);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Toast */
+.toast {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background-color: #ffffff;
+    color: var(--warna-teks-utama);
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-left: 4px solid var(--warna-sukses);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    pointer-events: none;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.toast i {
+    color: var(--warna-sukses);
+    font-size: 1.3rem;
+}
+
+/* Header */
+.site-header {
+    background-color: var(--warna-latar-header);
+    border-bottom: 1px solid var(--warna-garis);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.header-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.site-title {
+    font-family: var(--font-judul);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--warna-aksen);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: var(--transisi);
+}
+
+.site-title:hover {
+    color: var(--warna-aksen-muda);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Tombol Copy Link */
+.btn-copy-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--warna-aksen);
+    color: #ffffff;
+    border: none;
+    font-family: var(--font-teks);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 10px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: var(--transisi);
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.btn-copy-link:hover {
+    background-color: #7a5c3e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(140, 107, 74, 0.3);
+}
+
+.btn-copy-link:active {
+    transform: translateY(0);
+}
+
+.btn-copy-link-large {
+    font-size: 0.95rem;
+    padding: 14px 28px;
+    gap: 10px;
+}
+
+/* Font Controls */
+.font-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--warna-latar);
+    border-radius: 30px;
+    padding: 4px 6px;
+    border: 1px solid var(--warna-garis);
+}
+
+.font-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-teks);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--warna-teks-sekunder);
+    padding: 5px 12px;
+    border-radius: 20px;
+    transition: var(--transisi);
+    letter-spacing: 0.5px;
+}
+
+.font-btn:hover {
+    background-color: var(--warna-btn-hover);
+    color: var(--warna-aksen);
+}
+
+.font-btn.active {
+    background-color: var(--warna-aksen);
+    color: #ffffff;
+}
+.main-content {
+    flex: 1;
+}
+
+.page {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px 30px;
+}
+
+/* Daftar Isi */
+.daftar-isi-container {
+    text-align: center;
+}
+
+.daftar-header {
+    margin-bottom: 30px;
+    padding-top: 20px;
+}
+
+.daftar-subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--warna-aksen-muda);
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.daftar-judul {
+    font-family: var(--font-judul);
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--warna-teks-utama);
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.daftar-penulis {
+    font-size: 1rem;
+    color: var(--warna-teks-sekunder);
+    font-style: italic;
+}
+
+.daftar-penulis span {
+    color: var(--warna-aksen);
+    font-weight: 600;
+    font-style: normal;
+}
+.link-sosial {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.btn-sosial {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: var(--font-teks);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: var(--transisi);
+    color: #ffffff;
+}
+
+.btn-sosial i {
+    font-size: 1.2rem;
+}
+
+.btn-wattpad {
+    background-color: var(--warna-wattpad);
+    box-shadow: 0 4px 15px rgba(255, 97, 38, 0.3);
+}
+
+.btn-wattpad:hover {
+    background-color: #e54d15;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 97, 38, 0.4);
+}
+
+.btn-saweria {
+    background-color: var(--warna-saweria);
+    box-shadow: 0 4px 15px rgba(247, 158, 27, 0.3);
+}
+
+.btn-saweria:hover {
+    background-color: #e08e0f;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(247, 158, 27, 0.4);
+}
+
+.daftar-list {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 40px 40px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--warna-garis);
+    margin-bottom: 30px;
+}
+
+.list-title {
+    font-family: var(--font-judul);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--warna-aksen);
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--warna-garis);
+}
+
+.chapter-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.chapter-link {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 16px 20px;
+    text-decoration: none;
+    color: var(--warna-teks-utama);
+    border-radius: 10px;
+    transition: var(--transisi);
+    cursor: pointer;
+}
+
+.chapter-link:hover {
+    background-color: var(--warna-btn-hover);
+    transform: translateX(5px);
+}
+
+.chapter-number {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--warna-aksen-muda);
+    min-width: 60px;
+    text-align: left;
+}
+
+.chapter-name {
+    flex: 1;
+    font-size: 1.05rem;
+    font-weight: 500;
+    text-align: left;
+}
+
+.chapter-arrow {
+    color: var(--warna-aksen-muda);
+    font-size: 1.1rem;
+    opacity: 0.6;
+}
+.share-section {
+    margin: 30px 0 40px;
+    padding: 30px 20px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--warna-garis);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.share-text {
+    font-size: 0.9rem;
+    color: var(--warna-teks-sekunder);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.daftar-footer {
+    color: var(--warna-teks-sekunder);
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+.chapter-page {
+    display: none;
+}
+
+.chapter-page.active {
+    display: block;
+}
+
+.chapter-container {
+    padding-top: 40px;
+}
+
+.btn-kembali {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: 1px solid var(--warna-garis);
+    color: var(--warna-aksen);
+    font-family: var(--font-teks);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: var(--transisi);
+    margin-bottom: 35px;
+    letter-spacing: 0.3px;
+    background-color: #ffffff;
+}
+
+.btn-kembali:hover {
+    background-color: var(--warna-btn-hover);
+    border-color: var(--warna-aksen-muda);
+    transform: translateX(-3px);
+}
+
+.chapter-content {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 50px 55px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--warna-garis);
+}
+
+.chapter-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.chapter-label {
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--warna-aksen-muda);
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.chapter-title {
+    font-family: var(--font-judul);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--warna-teks-utama);
+    line-height: 1.3;
+    margin-bottom: 18px;
+}
+
+.chapter-divider {
+    width: 60px;
+    height: 3px;
+    background-color: var(--warna-aksen);
+    margin: 0 auto;
+    border-radius: 3px;
+    opacity: 0.7;
+}
+
+.chapter-text p {
+    margin-bottom: 1.6em;
+    font-size: inherit;
+    text-align: justify;
+    text-indent: 2em;
+}
+
+.chapter-text p:first-of-type {
+    text-indent: 0;
+}
+
+.chapter-text p:first-of-type::first-letter {
+    font-family: var(--font-judul);
+    font-size: 3.2em;
+    font-weight: 700;
+    color: var(--warna-aksen);
+    float: left;
+    line-height: 1;
+    margin-right: 12px;
+    margin-top: 4px;
+}
+@media (max-width: 768px) {
+    .header-inner {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px 20px;
+    }
+
+    .header-actions {
+        justify-content: center;
+    }
+
+    .container {
+        padding: 30px 20px;
+    }
+
+    .daftar-judul {
+        font-size: 2rem;
+    }
+
+    .daftar-list {
+        padding: 25px 20px;
+    }
+
+    .chapter-content {
+        padding: 30px 25px;
+    }
+
+    .chapter-title {
+        font-size: 1.7rem;
+    }
+
+    .link-sosial {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-sosial {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+
+    .toast {
+        top: 20px;
+        right: 20px;
+        left: 20px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .daftar-judul {
+        font-size: 1.6rem;
+    }
+
+    .chapter-content {
+        padding: 20px 18px;
+    }
+
+    .btn-copy-link span {
+        display: none;
+    }
+
+    .btn-copy-link-large span {
+        display: inline;
+    }
+  }
